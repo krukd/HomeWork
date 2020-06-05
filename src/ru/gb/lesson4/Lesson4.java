@@ -140,18 +140,38 @@ public class Lesson4 {
 
     //checkWin
     private static boolean isWinnerExists(char symb) {
-        for (int i = 0; i < 5; i++)
-            if ((field[i][0] == symb && field[i][1] == symb &&
-                    field[i][2] == symb && field[i][3] == symb && field[i][4] == symb) ||
-                    (field[0][i] == symb && field[1][i] == symb &&
-                            field[2][i] == symb && field[3][i] == symb && field[4][i] == symb))
-                return true;
-        if ((field[0][0] == symb && field[1][1] == symb &&
-                field[2][2] == symb && field[3][3] == symb && field[4][4] == symb) ||
-                (field[4][0] == symb && field[3][1] == symb && field[2][2] == symb &&
-                        field[1][3] == symb && field[0][4] == symb))
-            return true;
+        for (int i = 0; i < fieldSizeX; i++) {
+            int counterX = 0;
+            for (int j = 0; j < fieldSizeX; j++) {
+                if (field[i][j] == symb) counterX++;
+                if (counterX == WIN_NUMBER) return true;
+            }
+        }
+        for (int i = 0; i < fieldSizeX; i++) {
+            int counterY = 0;
+            for (int j = 0; j < fieldSizeX; j++) {
+                if (field[j][i] == symb) counterY++;
+                if (counterY == WIN_NUMBER) return true;
+            }
+        }
+        for (int i = 0; i < fieldSizeX; i++) {
+            int counterDiagonalLeft = 0;
+            for (int j = 0; j < fieldSizeX; j++) {
+                if (field[i][j] == symb) counterDiagonalLeft++;
+                i++;
+                if (counterDiagonalLeft == WIN_NUMBER) return true;
+            }
+        }
+        for (int i = fieldSizeX - 1; i > 0; i--) {
+            int counterDiagonalRight = 0;
+            for (int j = 0; j < fieldSizeX; j++) {
+                if (field[i][j] == symb) counterDiagonalRight++;
+                i--;
+                if (counterDiagonalRight == WIN_NUMBER) return true;
+            }
+        }
         return false;
     }
+
 }
 
