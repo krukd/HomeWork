@@ -11,7 +11,7 @@ public class Lesson4 {
     private static final char DOT_AI = 'O';
     // Символ пустой клетка
     private static final char DOT_EMPTY = ' ';
-
+    private static final int WIN_NUMBER = 3;
     // Упрощения вместо использования field.length
     private static int fieldSizeX;
     private static int fieldSizeY;
@@ -23,7 +23,7 @@ public class Lesson4 {
 
     //main
     public static void main(String[] args) {
-        int fieldSize = 5;
+        int fieldSize = 3;
         while (true) {
             init(fieldSize);
             printField();
